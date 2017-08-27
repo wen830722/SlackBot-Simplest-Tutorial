@@ -69,6 +69,7 @@ ngrok http 5000
 #### 複製 `https` 開頭的那段網址！
 
 接下來回到[Slack App的管理介面](https://api.slack.com/apps)，這邊需要自行指定四個不同的URL，分別處理**驗證**、**Slack Events**、**Slash Commands**，以及**Interactive Messages**
+
 ![](https://i.imgur.com/V2NBBYl.png)
 
 * **OAuth & Permissions**
@@ -81,21 +82,21 @@ ngrok http 5000
 * **Event Subscriptions**
 
  ![](https://i.imgur.com/7BunWIX.png)
-
-    對應到 **Step2** 所訂閱的 events，例如 channel 中有人傳訊息，當 event 被觸發時，Slack 會發出 http post request 到我們指定的Request URL。
+ 
+ 對應到 **Step2** 所訂閱的 events，例如 channel 中有人傳訊息，當 event 被觸發時，Slack 會發出 http post request 到我們指定的Request URL。
     
 * **Slash Commands**
 
  ![](https://i.imgur.com/DLEjndj.png)
-
-    建立屬於自己 App 的 Slash Command，跟前面的運作原理一樣，當有人使用`/truth`，則 Slack 會發出 http post request 到指定的 Request URL。
+ 
+ 建立屬於自己 App 的 Slash Command，跟前面的運作原理一樣，當有人使用`/truth`，則 Slack 會發出 http post request 到指定的 Request URL。
 
 * **Interactive Messages**
 
  ![](https://i.imgur.com/Q0RxIhY.png)
-
-    [Interactive Messages](https://api.slack.com/docs/message-buttons) 指的是 **button** 和 **menu**，這兩個物件讓使用者可以透過點擊的動作達到互動的效果。
-    跟前面一模模一樣樣，當 button 或是 meau 的選項被點擊，則 Slack 會發出 http post request 到指定的 Request URL。
+ 
+ [Interactive Messages](https://api.slack.com/docs/message-buttons) 指的是 **button** 和 **menu**，這兩個物件讓使用者可以透過點擊的動作達到互動的效果。
+ 跟前面一模模一樣樣，當 button 或是 meau 的選項被點擊，則 Slack 會發出 http post request 到指定的 Request URL。
 
 以上都設定完成後，請先連上`https://011bd378.ngrok.io/begin_auth`進行驗證的動作～（要用自己拿到的ngrok網址！）
 驗證完成後，就可以打開你的 Slack 跟 simplebot 互動啦～ :tada: 
