@@ -7,7 +7,6 @@ from flask import Flask, request, make_response, render_template, jsonify
 
 pp = pprint.PrettyPrinter(indent=4)
 pyBot = bot.Bot()
-target_channel_id = ""
 
 app = Flask(__name__)
 
@@ -33,8 +32,8 @@ def eventListening():
     handler helper function to route events to our Bot.
     """
     slack_event = json.loads(request.data)
-    print('slack_event =')
-    pp.pprint(slack_event)
+    # print('slack_event =')
+    # pp.pprint(slack_event)
 
     # ============= Slack URL Verification ============ #
     # In order to verify the url of our endpoint, Slack will send a challenge
@@ -77,11 +76,11 @@ def commandListening():
     DMchannel_id = getDMChannelId(user_id) # direct message channel id
 
     if command == "/truth":
-        target_channel_id = channel_id
+        pyBot.targetChannel = channel_id
         post_message = pyBot.client.api_call("chat.postMessage",
                             channel=channel_id,
                             as_user=True,
-                            text="%s used `/truth`"
+                            text="%s used */truth*" % user_name
                             )
         if not post_message["ok"]:
             pp.pprint(post_message)
@@ -121,18 +120,27 @@ def clickListening():
     actions = data["actions"]
     original_message = data.get("original_message")
     user_name = data["user"]["name"]
-    # pp.pprint(original_message)
+    # pp.pprint(data)
 
-    if actions[0]["name"] == "members_list" & target_channel_id != "":
+    if actions[0]["name"] == "members_list" and pyBot.targetChannel != "":
         selected_option = actions[0]["selected_options"][0]["value"]
         message = "Sorry @%s, @%s wants you to leave:sob:" % (selected_option, user_name)
         post_message = pyBot.client.api_call("chat.postMessage",
-                            channel=target_channel_id,
+                            channel=pyBot.targetChannel,
                             as_user=True,
                             text=message,
                             )
         if not post_message["ok"]:
             pp.pprint(post_message)
+    
+        # delete the original message
+        post_message = pyBot.client.api_call("chat.delete",
+                            channel=data["channel"]["id"],
+                            ts=original_message["ts"]
+                            )
+        if not post_message["ok"]:
+            pp.pprint(post_message)
+
     return make_response("", 200,) 
 
 def _event_handler(event_type, slack_event):
