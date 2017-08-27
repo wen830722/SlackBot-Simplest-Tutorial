@@ -66,28 +66,32 @@ ngrok http 5000
 ```
 ![](https://i.imgur.com/icrJtxG.png)
 
-==複製 **https** 開頭的那段網址！==
+#### 複製 `https` 開頭的那段網址！
 
 接下來回到[Slack App的管理介面](https://api.slack.com/apps)，這邊需要自行指定四個不同的URL，分別處理**驗證**、**Slack Events**、**Slash Commands**，以及**Interactive Messages**
 ![](https://i.imgur.com/V2NBBYl.png)
 
 * **OAuth & Permissions**
+
  ![](https://i.imgur.com/iGOy9IP.png)
  
      這是驗證流程中的一個步驟，簡單來說我們需要拿到一組 `code + Clien ID + Client Secret` 去交換 Slack 的 API access token。
 當完成驗證流程前面的步驟後，Slack 會送出 http get request 到我們指定的 Redirect URL（`https://011bd378.ngrok.io/finish_auth?code=XXXXXXXXXXX&state=`），有了code，我們就可以去交換token。
 
 * **Event Subscriptions**
+
  ![](https://i.imgur.com/7BunWIX.png)
 
     對應到 **Step2** 所訂閱的 events，例如 channel 中有人傳訊息，當 event 被觸發時，Slack 會發出 http post request 到我們指定的Request URL。
     
 * **Slash Commands**
+
  ![](https://i.imgur.com/DLEjndj.png)
 
     建立屬於自己 App 的 Slash Command，跟前面的運作原理一樣，當有人使用`/truth`，則 Slack 會發出 http post request 到指定的 Request URL。
 
 * **Interactive Messages**
+
  ![](https://i.imgur.com/Q0RxIhY.png)
 
     [Interactive Messages](https://api.slack.com/docs/message-buttons) 指的是 **button** 和 **menu**，這兩個物件讓使用者可以透過點擊的動作達到互動的效果。
