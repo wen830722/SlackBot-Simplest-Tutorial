@@ -96,8 +96,8 @@ ngrok http 5000
  ![](https://i.imgur.com/Q0RxIhY.png)
  
  [Interactive Messages](https://api.slack.com/docs/message-buttons) 指的是 **button** 和 **menu**，這兩個物件讓使用者可以透過點擊的動作達到互動的效果。
- 
  跟前面一模模一樣樣，當 button 或是 meau 的選項被點擊，則 Slack 會發出 http post request 到指定的 Request URL。
+
 
 以上都設定完成後，請先連上`https://011bd378.ngrok.io/begin_auth`進行驗證的動作～（要用自己拿到的ngrok網址！）
 驗證完成後，就可以打開你的 Slack 跟 simplebot 互動啦～ :tada: 
