@@ -18,6 +18,7 @@ class Bot(object):
     def __init__(self):
         super(Bot, self).__init__()
         self.name = "simplebot"
+        self.targetChannel = ""
         # When we instantiate a new bot object, we can access the app
         # credentials we set earlier in our local development environment.
         self.oauth = {"client_id": os.environ.get("SLACK_CLIENT_ID"),
