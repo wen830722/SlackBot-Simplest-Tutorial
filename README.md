@@ -21,7 +21,7 @@ cd XXXX
 pip3 install -r requirements.txt
 ```
 ## :ballot_box_with_check:Get started 
-### Step1: 建立==Slack App==與==Bot user==
+### Step1: 建立 Slack App 與 Bot user
 * https://api.slack.com/apps
 
 ![](https://i.imgur.com/UaNfxjN.png)
@@ -46,7 +46,7 @@ pip3 install -r requirements.txt
 
 ![](https://i.imgur.com/p81DZyi.png)
 
-先將==Client ID==、==Client Secret==和==Verification Token==儲存至環境變數中（in your virtual envirnment）。
+先將`Client ID`、`Client Secret`和`Verification Token`儲存至環境變數中（in your virtual envirnment）。
 之後進行驗證程序時會用到，程式會從這些環境變數取得對應的金鑰。
 ```shell=zsh
 export SLACK_CLIENT_ID='XXXXXXXXXXXXXXXX'
@@ -74,7 +74,7 @@ ngrok http 5000
 * **OAuth & Permissions**
  ![](https://i.imgur.com/iGOy9IP.png)
  
-     這是驗證流程中的一個步驟，簡單來說我們需要拿到一組 ==code + Clien ID + Client Secret== 去交換 Slack 的 API access token。
+     這是驗證流程中的一個步驟，簡單來說我們需要拿到一組 `code + Clien ID + Client Secret` 去交換 Slack 的 API access token。
 當完成驗證流程前面的步驟後，Slack 會送出 http get request 到我們指定的 Redirect URL（`https://011bd378.ngrok.io/finish_auth?code=XXXXXXXXXXX&state=`），有了code，我們就可以去交換token。
 
 * **Event Subscriptions**
