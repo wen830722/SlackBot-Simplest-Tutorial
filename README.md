@@ -1,6 +1,11 @@
 # Slack Bot 新手入門
 使用 python & Flask 來實作一個簡單的 Slack bot
 
+![](https://i.imgur.com/BIRAg00.png)
+
+![](https://i.imgur.com/MfsP2G1.png)
+
+![](https://i.imgur.com/OOozFng.png)
 
 ## :ballot_box_with_check:環境準備
 * Python3
