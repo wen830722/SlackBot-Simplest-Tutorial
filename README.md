@@ -13,11 +13,11 @@
 # create a new virtual envirnment for this project
 virtualenv slackbot.env --python=python3
 # active the virtual envirnment
-source slackbot.env/bin/active
+source slackbot.env/bin/activate
 ```
 ```shell=zsh
-git clone XXXX
-cd XXXX
+git clone https://github.com/wen830722/SlackBot-Simplest-Tutorial.git
+cd SlackBot-Simplest-Tutorial
 pip3 install -r requirements.txt
 ```
 ## :ballot_box_with_check:Get started 
